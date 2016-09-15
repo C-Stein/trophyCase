@@ -1,0 +1,23 @@
+{
+  "name": "trophyCase",
+  "authors": [
+    "Caitlin Stein <caitlin.teter@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "oauth-js": "oauthio-web#^0.5.2"
+  },
+  "devDependencies": {
+    "oauth-js": "oauthio-web#^0.5.2"
+  }
+}
