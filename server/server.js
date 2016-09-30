@@ -3,8 +3,11 @@
 const { json } = require('body-parser')
 const express = require('express')
 const mongoose = require('mongoose')
+const bcrypt = require('bcrypt')
 const session = require('express-session')
 const RedisStore = require('connect-redis')(session)
+
+const User = require('./models/user')
 
 const MONGODB_URL = process.env.MONGODB_URL || 'mongodb://localhost:27017/trophycase'
 const app = express()
@@ -71,7 +74,11 @@ app.post('/register', ({body: {email, password}}, res) => {
               }
             })
           })
-      .then(hash => User.create({ email, password: hash }))
+      .then(hash =>  {
+        res.send({msg:"User successfully created"})
+        return User.create({ email, password: hash })
+      })
+
       .then(() => res.redirect('/login'))
       .catch(console.error)
 })
