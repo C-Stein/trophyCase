@@ -2,12 +2,13 @@
 
 const { json } = require('body-parser')
 const express = require('express')
-const mongoose = require('mongoose')
+//const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const session = require('express-session')
 const RedisStore = require('connect-redis')(session)
 
 const User = require('./models/user')
+const Trophy = require('./models/trophy')
 const { connect } = require('./database/database')
 
 const app = express()
@@ -28,13 +29,6 @@ app.use((req, res, next) => {
   app.locals.email = req.session.email
   console.log("user-mail: ", app.locals.email);
   next()
-})
-
-//mongoose.Promise  = Promise
-
-const Trophy = mongoose.model('trophy', {
-  name: String,
-  description: String
 })
 
 app.post('/login', ({ session, body: { email, password } }, res, err) => {
