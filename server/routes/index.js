@@ -21,7 +21,6 @@ router.post('/register', ({body: {email, password}}, res) => {
         res.send({msg:"User successfully created"})
         return User.create({ email, password: hash })
       })
-      //.then(() => res.redirect('/login'))
       .catch(console.error)
 })
 
@@ -39,15 +38,15 @@ router.post('/login', ({ session, body: { email, password } }, res, err) => {
            })
          )
        } else {
-         res.render('login', { msg: 'Email does not exist in our system' })
+         res.send({ msg: 'Email does not exist in our system' })
        }
      })
      .then((matches) => {
        if (matches) {
          session.email = email
-         res.redirect('/')
+         res.send({ msg: `logged in as ${email}` })
        } else {
-         res.render('login', { msg: 'Password does not match' })
+         res.send({ msg: 'Password does not match' })
        }
       })
 })
