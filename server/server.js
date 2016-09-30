@@ -78,8 +78,7 @@ app.post('/register', ({body: {email, password}}, res) => {
         res.send({msg:"User successfully created"})
         return User.create({ email, password: hash })
       })
-
-      .then(() => res.redirect('/login'))
+      //.then(() => res.redirect('/login'))
       .catch(console.error)
 })
 
