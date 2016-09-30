@@ -8,8 +8,8 @@ const session = require('express-session')
 const RedisStore = require('connect-redis')(session)
 
 const User = require('./models/user')
+const { connect } = require('./database/database')
 
-const MONGODB_URL = process.env.MONGODB_URL || 'mongodb://localhost:27017/trophycase'
 const app = express()
 const PORT = process.env.PORT || 3000
 
@@ -30,7 +30,7 @@ app.use((req, res, next) => {
   next()
 })
 
-mongoose.Promise  = Promise
+//mongoose.Promise  = Promise
 
 const Trophy = mongoose.model('trophy', {
   name: String,
@@ -89,6 +89,11 @@ app.get('/api/trophies', (req, res, err) => {
   .catch(err)
 })
 
-mongoose.connect(MONGODB_URL, () => 
-  app.listen(PORT, () => console.log(`listening on port ${PORT}`))
-)
+//listen
+connect()
+  .then(() => {
+    app.listen(PORT, () => {
+    console.log(`Hey, I'm listening on port ${PORT}`);
+    })
+  })
+  .catch(console.error)
