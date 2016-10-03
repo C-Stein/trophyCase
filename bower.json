@@ -1,5 +1,5 @@
 {
-  "name": "trophyCase",
+  "name": "trophycase",
   "authors": [
     "Caitlin Stein <caitlin.teter@gmail.com>"
   ],
@@ -15,9 +15,9 @@
     "tests"
   ],
   "dependencies": {
-    "oauth-js": "oauthio-web#^0.5.2"
+    "angular": "^1.5.8",
+    "bootstrap": "^3.3.7",
+    "angular-route": "^1.5.8"
   },
-  "devDependencies": {
-    "oauth-js": "oauthio-web#^0.5.2"
-  }
+  "devDependencies": {}
 }
