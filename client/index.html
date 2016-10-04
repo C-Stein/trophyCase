@@ -7,7 +7,9 @@
   <!-- <link rel="stylesheet" type="text/css" href="styles/main.css"> -->
 </head>
 <body ng-app="Trophies">
-  <ng-include src="'partials/nav.html'"></ng-include>
+  <div ng-controller="NavCtrl">
+    <ng-include src="'partials/nav.html'"></ng-include>
+  </div>
   <h1>Trophy Case</h1>
   <div ng-view></div>
   <script src="lib/jquery/dist/jquery.min.js"></script>
@@ -21,5 +23,6 @@
   <script src="app/controllers/groups.js"></script>
   <script src="app/controllers/login.js"></script>
   <script src="app/controllers/register.js"></script>
+  <script src="app/controllers/nav.js"></script>
 </body>
 </html>
