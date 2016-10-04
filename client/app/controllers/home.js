@@ -1,7 +1,10 @@
-app.controller("HomeCtrl", ["$scope",
-  function($scope) {
+app.controller("HomeCtrl", ["$scope", "$sessionStorage",
+  function($scope, $sessionStorage) {
      
 $scope.fun = "funsies"
+
+$scope.currentUserEmail = $sessionStorage.currentUser.email;
+
 
 }]);
 

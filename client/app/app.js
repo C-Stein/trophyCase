@@ -1,4 +1,4 @@
-var app = angular.module("Trophies", ['ngRoute']);
+var app = angular.module("Trophies", ['ngRoute', 'ngStorage']);
 
 app.config(['$routeProvider',
   function($routeProvider, $locationProvider) {
