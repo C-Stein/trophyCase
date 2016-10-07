@@ -19,7 +19,7 @@ app.controller("LoginCtrl",
       $http
         .post('/login', loginUser)
         .then((data) => {
-          console.log('data.data.msg: ', data.data.msg)
+          console.log('data.data: ', data.data)
           if (data.data.msg == true) {
             $sessionStorage.currentUser = loginUser
             console.log(`logged in as ${loginUser.email}`)

@@ -9,7 +9,7 @@ const router = Router()
 
 router.post('/register', ({body: {email, password}}, res) => {
       return new Promise((resolve, reject) => {
-      bcrypt.hash(password, 15, (err, hash) => {
+      bcrypt.hash(password, 8, (err, hash) => {
               if (err) {
                 reject(err)
               } else {
@@ -24,10 +24,13 @@ router.post('/register', ({body: {email, password}}, res) => {
       .catch(console.error)
 })
 
+let loggedInUser;
+
 router.post('/login', ({ session, body: { email, password } }, res, err) => {
   User.findOne({ email })
      .then(user => {
        if (user) {
+        loggedInUser = user;
          return new Promise((resolve, reject) =>
            bcrypt.compare(password, user.password, (err, matches) => {
              if (err) {
@@ -44,7 +47,7 @@ router.post('/login', ({ session, body: { email, password } }, res, err) => {
      .then((matches) => {
        if (matches) {
          session.email = email
-         res.send({ msg: true })
+         res.json({ loggedInUser, msg: true })
        } else {
          res.send({ msg: 'Password does not match' })
        }
