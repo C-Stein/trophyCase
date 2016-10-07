@@ -23,11 +23,11 @@ app.use(session({
   'secret': 'supersecretkey' //fine to put this on github
 }))
 
-app.use((req, res, next) => {
-  app.locals.email = req.session.email
-  console.log("user-mail: ", app.locals.email);
-  next()
-})
+// app.use((req, res, next) => {
+//   app.locals.email = req.session.email
+//   console.log("user-mail: ", app.locals.email);
+//   next()
+// })
 
 app.use(routes)
 

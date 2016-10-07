@@ -18,9 +18,16 @@ app.controller("LoginCtrl",
 
       $http
         .post('/login', loginUser)
-        .then($sessionStorage.currentUser = loginUser)
-        .then(console.log(`logged in as ${loginUser.email}`))
-        .then($location.path('/'))
+        .then((data) => {
+          console.log('data.data.msg: ', data.data.msg)
+          if (data.data.msg == true) {
+            $sessionStorage.currentUser = loginUser
+            console.log(`logged in as ${loginUser.email}`)
+          } else {
+            alert(data.data.msg)
+          }
+          $location.path('/')
+        })
         .catch(console.error)
     }
 }]);

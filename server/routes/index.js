@@ -44,7 +44,7 @@ router.post('/login', ({ session, body: { email, password } }, res, err) => {
      .then((matches) => {
        if (matches) {
          session.email = email
-         res.send({ msg: `logged in as ${email}` })
+         res.send({ msg: true })
        } else {
          res.send({ msg: 'Password does not match' })
        }

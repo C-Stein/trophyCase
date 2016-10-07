@@ -3,8 +3,9 @@ app.controller("HomeCtrl", ["$scope", "$sessionStorage",
      
 $scope.fun = "funsies"
 
-$scope.currentUserEmail = $sessionStorage.currentUser.email;
-
+if ($sessionStorage.currentUser) {
+  $scope.currentUserEmail = $sessionStorage.currentUser.email;
+}
 
 }]);
 
