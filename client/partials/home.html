@@ -7,5 +7,11 @@
 </div>
 <div class="personalCase">
   <h3>Trophies appear here</h3>
+    <ul class="list" ng-repeat="trophy in trophies">
+      <li>
+        <img src="img/trophy.png" height=50 width=50>
+        {{ trophy.name }} is {{ trophy.description }}
+      </li>
+  </ul>
 </div>
 

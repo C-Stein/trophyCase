@@ -21,7 +21,7 @@ app.controller("LoginCtrl",
         .then((data) => {
           console.log('data.data: ', data.data)
           if (data.data.msg == true) {
-            $sessionStorage.currentUser = loginUser
+            $sessionStorage.currentUser = data.data.loggedInUser
             console.log(`logged in as ${loginUser.email}`)
           } else {
             alert(data.data.msg)

@@ -5,6 +5,7 @@ $scope.fun = "funsies"
 
 if ($sessionStorage.currentUser) {
   $scope.currentUserEmail = $sessionStorage.currentUser.email;
+  $scope.trophies = $sessionStorage.currentUser.trophiesEarned
 }
 
 }]);
