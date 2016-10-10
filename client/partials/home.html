@@ -7,6 +7,9 @@
 </div>
 <div class="personalCase">
   <h3>Trophies appear here</h3>
+    <div ng-if="trophies.length == 0">
+      <p>You haven't earned any trophies yet :-(</p>
+    </div>
     <ul class="list" ng-repeat="trophy in trophies">
       <li>
         <img src="img/trophy.png" height=50 width=50>
