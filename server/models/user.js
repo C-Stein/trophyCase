@@ -15,5 +15,9 @@ module.exports = mongoose.model('User', {
   password: {
     type: String,
     required: true,
-  }
+  },
+  trophiesEarned: {
+    type: Array,
+    required: true,
+  },
 })

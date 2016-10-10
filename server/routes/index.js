@@ -7,6 +7,7 @@ const Trophy = require('../models/trophy')
 
 const router = Router()
 
+
 router.post('/register', ({body: {email, password}}, res) => {
       return new Promise((resolve, reject) => {
       bcrypt.hash(password, 8, (err, hash) => {
@@ -24,7 +25,7 @@ router.post('/register', ({body: {email, password}}, res) => {
       .catch(console.error)
 })
 
-let loggedInUser;
+var loggedInUser;
 
 router.post('/login', ({ session, body: { email, password } }, res, err) => {
   User.findOne({ email })
@@ -61,4 +62,23 @@ router.get('/api/trophies', (req, res, err) => {
   .catch(err)
 })
 
+router.get('/api/userTrophies/:id', (req, res, err) => {
+    let id = req.params.id 
+    User
+      .findOne({_id : id})
+      .then((data) => {
+        console.log("data", data);
+        console.log("data.password", data.password);
+        console.log("data.trophiesEarned", data.trophiesEarned);
+        let arrayofTrophies = data.trophiesEarned
+        //console.log("arrayofTrophies", arrayofTrophies);
+        Trophy
+          .find({ _id: { $in: arrayofTrophies } } )
+          .then(trophies => res.json({trophies}))
+          .catch(err)
+      })
+      .catch(err)
+
+
+})
 module.exports = router
