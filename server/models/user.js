@@ -20,4 +20,5 @@ module.exports = mongoose.model('User', {
     type: Array,
     required: true,
   },
+  //_id: {type: String},
 })
