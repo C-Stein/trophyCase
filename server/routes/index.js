@@ -90,14 +90,15 @@ router.get('/api/userTrophies/:id', (req, res, err) => {
     console.log('trophyId', trophyId);
     console.log('userId', userId);
     
-    // User
-    //   .findByIdAndUpdate(id, 
-    //     { $push: { trophiesEarned: trophyId } }, { new: true }, 
-    //     function (err, user) {
-    //       if (err) return handleError(err);
-    //       res.send(user);
-//});
-  })
+    User
+      .findByIdAndUpdate(userId, 
+        { $push: { trophiesEarned: trophyId } }, { new: true }, 
+        function (err, user) {
+          if (err) return handleError(err);
+          res.send(user);
+        })  
+  });
+
 
 
 
