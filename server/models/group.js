@@ -13,10 +13,10 @@ module.exports = mongoose.model('Group', {
     required: true,
   },
   groupCreator: {
-    type: ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
   groupMembers: {
-    type: [ObjectId]
+    type: [mongoose.Schema.Types.ObjectId]
   },
 })
