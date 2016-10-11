@@ -8,6 +8,11 @@ if ($sessionStorage.currentUser) {
   $scope.userId = $scope.loggedInUser._id
 }
 
+  $http.get('/api/groups')
+    .then( ({data: {groups}}) => 
+      $scope.groups = groups
+      )
+
 $scope.createGroup = () => {
   let group = {
       groupName: $scope.groupName,

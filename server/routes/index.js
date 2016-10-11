@@ -108,7 +108,12 @@ router.get('/api/userTrophies/:id', (req, res, err) => {
       })
   })
 
-
+router.get('/api/groups', (req, res, err) => {
+  Group
+  .find()
+  .then(groups => res.json({groups}))
+  .catch(err)
+})
 
 
 module.exports = router
