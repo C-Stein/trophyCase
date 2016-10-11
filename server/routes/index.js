@@ -78,7 +78,27 @@ router.get('/api/userTrophies/:id', (req, res, err) => {
           .catch(err)
       })
       .catch(err)
+    })
+
+  router.put('/api/users', (req, res, err) => {
+//express deprecated req.param(name): Use req.params, req.body, or req.query 
+    let trophyId = req.query.trophyId
+    let userId = req.query.userId
+    
+    console.log('req.query', req.query);
+
+    console.log('trophyId', trophyId);
+    console.log('userId', userId);
+    
+    // User
+    //   .findByIdAndUpdate(id, 
+    //     { $push: { trophiesEarned: trophyId } }, { new: true }, 
+    //     function (err, user) {
+    //       if (err) return handleError(err);
+    //       res.send(user);
+//});
+  })
 
 
-})
+
 module.exports = router
