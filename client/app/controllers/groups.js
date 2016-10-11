@@ -9,7 +9,7 @@ if ($sessionStorage.currentUser) {
 }
 
 $scope.createGroup = () => {
-  const group = {
+  let group = {
       groupName: $scope.groupName,
       groupDescription: $scope.groupDescription,
       groupCreator: $scope.userId,
@@ -19,6 +19,8 @@ $scope.createGroup = () => {
   $http
     .post('/api/groups', group)
       .then(() => {
+        $scope.groupName = ""
+        $scope.groupDescription = ""
         console.log("done");
       })
       .catch(console.error)
