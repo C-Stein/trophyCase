@@ -2,6 +2,15 @@
   <p>loading from the groups</p>
 </div>
 
-<div class="homeEntry">
-  <h3>{{fun}}</h3>
+<div>
+  <h2>Groups that you can join</h2>
+</div>
+
+<div>
+  <h2>Create a Group</h2>
+  <form ng-Submit="createGroup()">
+    <input type="text" ng-model="groupName" placeholder="Group Name">  
+    <input type="text" ng-model="groupDescription" placeholder="short description of your group"> 
+    <input type="submit">
+  </form>
 </div>

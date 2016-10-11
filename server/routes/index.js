@@ -4,6 +4,7 @@ const { Router } = require('express')
 const bcrypt = require('bcrypt')
 const User = require('../models/user')
 const Trophy = require('../models/trophy')
+const Group = require('../models/group')
 
 const router = Router()
 
@@ -98,6 +99,13 @@ router.get('/api/userTrophies/:id', (req, res, err) => {
           res.send(user);
         })  
   });
+
+  router.post('/api/groups', (req, res, err) => {
+    console.log("req.body", req.body);
+    Group
+      .create(req.body)
+      .then((group) => console.log("group", group) )
+  })
 
 
 
