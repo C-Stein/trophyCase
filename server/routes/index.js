@@ -72,7 +72,6 @@ router.get('/api/userTrophies/:id', (req, res, err) => {
         console.log("data.password", data.password);
         console.log("data.trophiesEarned", data.trophiesEarned);
         let arrayofTrophies = data.trophiesEarned
-        //console.log("arrayofTrophies", arrayofTrophies);
         Trophy
           .find({ _id: { $in: arrayofTrophies } } )
           .then(trophies => res.json({trophies}))
@@ -82,7 +81,6 @@ router.get('/api/userTrophies/:id', (req, res, err) => {
     })
 
   router.put('/api/users', (req, res, err) => {
-//express deprecated req.param(name): Use req.params, req.body, or req.query 
     let trophyId = req.query.trophyId
     let userId = req.query.userId
     
@@ -104,7 +102,10 @@ router.get('/api/userTrophies/:id', (req, res, err) => {
     console.log("req.body", req.body);
     Group
       .create(req.body)
-      .then((group) => console.log("group", group) )
+      .then((group) => {
+        console.log("group", group)
+        res.send("done") 
+      })
   })
 
 
