@@ -12,6 +12,18 @@ if ($sessionStorage.currentUser) {
     .then( ({data: {groups}}) => 
       $scope.groups = groups
       )
+$scope.joinGroup = (groupId) =>{
+    console.log("group claimed");
+    console.log("user id", $scope.loggedInUser._id);
+    console.log("group id!", groupId);
+
+    $http.put(`/api/userGroups`,
+                {},
+                { params: { groupId, userId: $scope.userId}})
+      .then((data) => {
+        console.log('data', data);
+      })
+}
 
 $scope.createGroup = () => {
   let group = {

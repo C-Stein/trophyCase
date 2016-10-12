@@ -5,7 +5,7 @@
 <div>
   <h2>Groups that you can join</h2>
     <ul class="list" ng-repeat="group in groups">
-    <a ng-click="">
+    <a ng-click="joinGroup(group._id)">
       <li>
           {{ group.groupName }}: {{ group.groupDescription }}
       </li>

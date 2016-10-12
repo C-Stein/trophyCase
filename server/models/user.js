@@ -17,8 +17,10 @@ module.exports = mongoose.model('User', {
     required: true,
   },
   trophiesEarned: {
-    type: Array,
-    required: true,
+    type: [mongoose.Schema.Types.ObjectId],
+    //required: true,
   },
-  //_id: {type: String},
+  groupsJoined: {
+    type: [mongoose.Schema.Types.ObjectId]
+  },
 })
