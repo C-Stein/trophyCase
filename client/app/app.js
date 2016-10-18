@@ -12,6 +12,9 @@ app.config(['$routeProvider',
       }).when ('/groups', {
         templateUrl: 'partials/groups.html',
         controller: 'GroupsCtrl',
+      }).when ('/groupDetail/:id', {
+        templateUrl: 'partials/groupDetail.html',
+        controller: 'GroupDetailCtrl',
       }).when ('/progress', {
         templateUrl: 'partials/progress.html',
         controller: 'ProgressCtrl',

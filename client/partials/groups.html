@@ -16,7 +16,7 @@
 <div>
   <h2>Groups You Created</h2>
   <ul class="list" ng-repeat="group in groupsCreated">
-    <a ng-click="">
+    <a href="#/groupDetail/{{ group._id }}">
       <li>
           {{ group.groupName }}
       </li>
