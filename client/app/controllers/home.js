@@ -11,10 +11,19 @@ if ($sessionStorage.currentUser) {
   console.log($scope.loggedInUser._id);
 }
 
+$scope.groups = []
+
 $http.get(`/api/userTrophies/${$scope.userId}`)
   .then( ({data}) => {
     console.log("data, ", data);
     $scope.trophies = data.trophies
+  }
+    )
+
+$http.get(`/api/userGroups/${$scope.userId}`)
+  .then( ({data}) => {
+    console.log("data, ", data);
+    $scope.groups = data.groups
   }
     )
 

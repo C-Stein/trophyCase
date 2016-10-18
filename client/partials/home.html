@@ -14,3 +14,15 @@
   </ul>
 </div>
 
+<div class="personalCase">
+  <h3>Here are the groups you have joined!</h3>
+    <div ng-if="groups.length == 0">
+      <p>You haven't joined any groups yet :-(</p>
+    </div>
+    <ul class="list" ng-repeat="group in groups">
+      <li>
+        {{ group.groupName }}
+      </li>
+  </ul>
+</div>
+

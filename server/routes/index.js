@@ -80,6 +80,23 @@ router.get('/api/userTrophies/:id', (req, res, err) => {
       .catch(err)
     })
 
+router.get('/api/userGroups/:id', (req, res, err) => {
+    let id = req.params.id 
+    User
+      .findOne({_id : id})
+      .then((data) => {
+        console.log("data", data);
+        console.log("data.password", data.password);
+        console.log("data.groupsJoined", data.groupsJoined);
+        let arrayofGroups = data.groupsJoined
+        Group
+          .find({ _id: { $in: arrayofGroups } } )
+          .then(groups => res.json({groups}))
+          .catch(err)
+      })
+      .catch(err)
+    })
+
   router.put('/api/users', (req, res, err) => {
     let trophyId = req.query.trophyId
     let userId = req.query.userId
