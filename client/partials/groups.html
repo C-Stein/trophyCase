@@ -7,9 +7,21 @@
     <ul class="list" ng-repeat="group in groups">
     <a ng-click="joinGroup(group._id)">
       <li>
-          {{ group.groupName }}: {{ group.groupDescription }}
+          {{ group.groupName }}: {{ group.groupDescription }} created by {{group.groupCreator}}
       </li>
     </a>
+    </ul>
+</div>
+
+<div>
+  <h2>Edit Groups You Created</h2>
+  <ul class="list" ng-repeat="group in groupsCreated">
+    <a ng-click="">
+      <li>
+          {{ group.groupName }}
+      </li>
+    </a>
+  </ul>
 </div>
 
 <div>

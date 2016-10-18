@@ -1,18 +1,28 @@
 app.controller("GroupsCtrl", ["$scope", "$http", "$sessionStorage",
   function($scope, $http, $sessionStorage) {
      
-$scope.fun = "groups are fun"
+  $scope.fun = "groups are fun"
 
-if ($sessionStorage.currentUser) {
-  $scope.loggedInUser = $sessionStorage.currentUser
-  $scope.userId = $scope.loggedInUser._id
-}
+  if ($sessionStorage.currentUser) {
+    $scope.loggedInUser = $sessionStorage.currentUser
+    $scope.userId = $scope.loggedInUser._id
+  }
 
   $http.get('/api/groups')
-    .then( ({data: {groups}}) => 
+    .then( ({data: {groups}}) => {
       $scope.groups = groups
-      )
-$scope.joinGroup = (groupId) =>{
+      console.log($scope.groups);
+      
+      $scope.groupsCreated = []
+      for (let i = 0; i < $scope.groups.length; i++) {
+        if ($scope.groups[i].groupCreator == $scope.userId) {
+          $scope.groupsCreated.push($scope.groups[i])
+        }
+      }
+    })
+
+
+  $scope.joinGroup = (groupId) =>{
     console.log("group claimed");
     console.log("user id", $scope.loggedInUser._id);
     console.log("group id!", groupId);
@@ -23,7 +33,7 @@ $scope.joinGroup = (groupId) =>{
       .then((data) => {
         console.log('data', data);
       })
-}
+  }
 
 $scope.createGroup = () => {
   let group = {
