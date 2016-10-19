@@ -19,4 +19,7 @@ module.exports = mongoose.model('Group', {
   groupMembers: {
     type: [mongoose.Schema.Types.ObjectId]
   },
+  groupTrophies: {
+    type: [mongoose.Schema.Types.ObjectId]
+  },
 })
