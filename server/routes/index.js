@@ -160,5 +160,14 @@ router.get('/api/groups', (req, res, err) => {
   .catch(err)
 })
 
+router.get('/api/groupDetail/:id', (req, res, err) => {
+  let id = req.params.id
+  console.log("getting group id thing");
+  Group
+  .findOne({_id : id})
+  .then(group => res.json({group}))
+  .catch(err)
+})
+
 
 module.exports = router

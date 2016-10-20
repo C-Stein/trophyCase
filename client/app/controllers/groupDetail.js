@@ -1,17 +1,26 @@
-app.controller("GroupDetailCtrl", ["$scope", "$sessionStorage", "$http",
-  function($scope, $sessionStorage, $http) {
-     
-$scope.fun = "funsies"
+app.controller("GroupDetailCtrl", 
+  ["$scope", "$sessionStorage", "$http", "$routeParams",
+  function($scope, $sessionStorage, $http, $routeParams) {
+    
+    $scope.groupId = $routeParams.groupId;
+
+    $http
+      .get(`/api/groupDetail/${$scope.groupId}`)
+      .then( ({data: {group}}) => 
+      $scope.group = group
+      )
 
 $scope.trophies =[]
 
-$scope.group = {
-                groupName: "example",
-                groupDescription: "example description",
-                groupCreator: "",
-                groupMembers: [],
-                groupTrophies: [],
-              }
+// $scope.group = {
+//                 groupName: "example",
+//                 groupDescription: "example description",
+//                 groupCreator: "",
+//                 groupMembers: [],
+//                 groupTrophies: [],
+//               }
+
+  
 
   $scope.createTrophy = () => {
     // saveoff currently entered info as a "trophy"
