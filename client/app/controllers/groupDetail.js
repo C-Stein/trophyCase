@@ -1,24 +1,45 @@
 app.controller("GroupDetailCtrl", 
-  ["$scope", "$sessionStorage", "$http", "$routeParams",
-  function($scope, $sessionStorage, $http, $routeParams) {
+  ["$scope", "$sessionStorage", "$http", "$routeParams", "$q",
+  function($scope, $sessionStorage, $http, $routeParams, $q) {
     
     $scope.groupId = $routeParams.groupId;
+    $scope.groupTrophies = []
+    $scope.notGroupTrophies = []
+
+//make it work w/o promise.all
 
     $http
       .get(`/api/groupDetail/${$scope.groupId}`)
-      .then( ({data: {group}}) => 
-      $scope.group = group
-      )
+      .then( ({data: {group}}) => {
+        $scope.group = group
 
-$scope.trophies =[]
+        $http.get('/api/trophies')
+          .then( ({data: {trophies}}) => {
+            $scope.allTrophies = trophies
+          
+          
+          //$scope.trophies = group.groupTrophies
 
-// $scope.group = {
-//                 groupName: "example",
-//                 groupDescription: "example description",
-//                 groupCreator: "",
-//                 groupMembers: [],
-//                 groupTrophies: [],
-//               }
+          //for each trophy in $scope.allTrophies
+          for (let i = 0; i < $scope.allTrophies.length; i++) {
+          //if the _id == any of the _ids in group.groupTrophies
+            if (group.groupTrophies.includes($scope.allTrophies[i]._id)) {
+          //push to $scope.groupTrophies
+              $scope.groupTrophies.push($scope.allTrophies[i])
+            } else {
+          //else push to $scope.notGroupTrophies
+              $scope.notGroupTrophies.push($scope.allTrophies[i])
+            }
+          }
+          })
+
+
+
+      console.log($scope.group);
+      })
+
+
+//make it work with promise.all ????
 
   
 

@@ -7,12 +7,26 @@
   <input type="submit" name="">
 </form>
 
-<h3>Current Trophies</h3>
-<ul class="list" ng-repeat="trophy in trophies">
+<h3>Current Trophies Available to this Group</h3>
+<ul class="list" ng-repeat="trophy in groupTrophies">
   <a ng-click="addTrophy()">  
     <li>
       <img src="img/trophy.png" height=50 width=50>
-          {{ trophy.name }} is {{ trophy.description }}
+          <p>name: {{ trophy.name }} description: {{ trophy.description }}</p>
+          <p>{{trophy}}</p>
+      <input type="button" value="remove from group">
+    </li>
+  </a>
+</ul>
+
+<h3>Trophies you can add to this Group</h3>
+<ul class="list" ng-repeat="trophy in notGroupTrophies">
+  <a ng-click="addTrophy()">  
+    <li>
+      <img src="img/trophy.png" height=50 width=50>
+      <p>name: {{ trophy.name }} description: {{ trophy.description }}</p>
+      <p>{{trophy}}</p>
+      <input type="button" value="add to group">
     </li>
   </a>
 </ul>
