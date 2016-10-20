@@ -63,6 +63,16 @@ router.get('/api/trophies', (req, res, err) => {
   .catch(err)
 })
 
+router.post('/api/trophies', (req, res, err) => {
+  console.log("req.body", req.body);
+    Trophy
+      .create(req.body)
+      .then((trophy) => {
+        console.log("trophy", trophy)
+        res.send("done") 
+      })
+})
+
 router.get('/api/userTrophies/:id', (req, res, err) => {
     let id = req.params.id 
     User

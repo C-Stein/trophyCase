@@ -1,2 +1,25 @@
 <h2>Group Detail</h2>
-<p>{{ fun }}</p>
+<!-- put edit switch here -->
+
+<form>
+  <input type="text" name="groupName" ng-model="group.groupName">
+  <input type="text" name="groupDescription" ng-model="group.groupDescription">
+  <input type="submit" name="">
+</form>
+
+<h3>Current Trophies</h3>
+<ul class="list" ng-repeat="trophy in trophies">
+  <a ng-click="addTrophy()">  
+    <li>
+      <img src="img/trophy.png" height=50 width=50>
+          {{ trophy.name }} is {{ trophy.description }}
+    </li>
+  </a>
+</ul>
+
+<h3>Create New Trophy</h3>
+<form>
+  <input type="text" name="trophyName" ng-model="trophyName">
+  <input type="text" name="trophyDescription" ng-model="trophyDescription">
+  <input type="submit" ng-click="createTrophy()">
+</form>
