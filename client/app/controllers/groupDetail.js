@@ -53,7 +53,7 @@ app.controller("GroupDetailCtrl",
     $http
       .post('/api/trophies', trophy)
       .then(() => {
-          $scope.trophies.push(trophy)
+          //$scope.trophies.push(trophy)
           $scope.trophyName = ""
           $scope.trophyDescription = ""
           console.log("done");

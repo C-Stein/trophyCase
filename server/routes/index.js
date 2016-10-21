@@ -9,6 +9,7 @@ const Group = require('../models/group')
 const router = Router()
 
 const trophies = require('../controllers/trophies.js')
+const userInfo = require('../controllers/userInfo.js')
 
 
 router.post('/register', ({body: {email, password}}, res) => {
@@ -58,15 +59,7 @@ router.post('/login', ({ session, body: { email, password } }, res, err) => {
 
 router.get('/api/trophies', trophies.get)
 
-router.post('/api/trophies', (req, res, err) => {
-  console.log("req.body", req.body);
-    Trophy
-      .create(req.body)
-      .then((trophy) => {
-        console.log("trophy", trophy)
-        res.send("done") 
-      })
-})
+router.post('/api/trophies', trophies.post)
 
 router.get('/api/userTrophies/:id', (req, res, err) => {
     let id = req.params.id 
@@ -85,22 +78,7 @@ router.get('/api/userTrophies/:id', (req, res, err) => {
       .catch(err)
     })
 
-router.get('/api/userGroups/:id', (req, res, err) => {
-    let id = req.params.id 
-    User
-      .findOne({_id : id})
-      .then((data) => {
-        console.log("data", data);
-        console.log("data.password", data.password);
-        console.log("data.groupsJoined", data.groupsJoined);
-        let arrayofGroups = data.groupsJoined
-        Group
-          .find({ _id: { $in: arrayofGroups } } )
-          .then(groups => res.json({groups}))
-          .catch(err)
-      })
-      .catch(err)
-    })
+router.get('/api/userGroups/:id', userInfo.getUserGroups)
 
   router.put('/api/users', (req, res, err) => {
     let trophyId = req.query.trophyId
@@ -181,6 +159,5 @@ router.put(`/api/groupDetail/`, (req, res, err) => {
           res.send(group);
         })
 })
-
 
 module.exports = router
