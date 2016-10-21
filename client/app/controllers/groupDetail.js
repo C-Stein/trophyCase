@@ -6,6 +6,7 @@ app.controller("GroupDetailCtrl",
     $scope.groupTrophies = []
     $scope.notGroupTrophies = []
 
+
 //make it work w/o promise.all
 
     $http
@@ -32,8 +33,6 @@ app.controller("GroupDetailCtrl",
             }
           }
           })
-
-
 
       console.log($scope.group);
       })
@@ -62,17 +61,20 @@ app.controller("GroupDetailCtrl",
       .catch(console.error)
   }
 
-  $scope.addTrophy = () =>{
+  $scope.addTrophy = (trophyId, trophy) =>{
     console.log("trophy added");
-    // console.log("user id", $scope.loggedInUser._id);
-    // console.log("group id!", groupId);
+    console.log("trophy id!", trophyId);
 
-    // $http.put(`/api/userGroups`,
-    //             {},
-    //             { params: { groupId, userId: $scope.userId}})
-    //   .then((data) => {
-    //     console.log('data', data);
-    //   })
+    $http.put(`/api/groupDetail/`,
+                {},
+                { params: { groupId: $scope.groupId, trophyId}})
+      .then((data) => {
+        console.log('data', data);
+        //push and pop from appropriate $scope.arrays
+        $scope.notGroupTrophies = 
+          $scope.notGroupTrophies.filter(item => item !== trophy);
+        $scope.groupTrophies.push(trophy)
+      })
   }
 
 

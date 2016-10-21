@@ -20,14 +20,12 @@
 </ul>
 
 <h3>Trophies you can add to this Group</h3>
-<ul class="list" ng-repeat="trophy in notGroupTrophies">
-  <a ng-click="addTrophy()">  
+<ul class="list" ng-repeat="trophy in notGroupTrophies">  
     <li>
       <img src="img/trophy.png" height=50 width=50>
       <p>name: {{ trophy.name }} description: {{ trophy.description }}</p>
       <p>{{trophy}}</p>
-      <input type="button" value="add to group">
-    </li>
+      <input type="button" value="add to group" ng-click="addTrophy(trophy._id, trophy)">
   </a>
 </ul>
 
