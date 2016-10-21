@@ -8,6 +8,8 @@ const Group = require('../models/group')
 
 const router = Router()
 
+const trophies = require('../controllers/trophies.js')
+
 
 router.post('/register', ({body: {email, password}}, res) => {
       return new Promise((resolve, reject) => {
@@ -25,8 +27,6 @@ router.post('/register', ({body: {email, password}}, res) => {
       })
       .catch(console.error)
 })
-
-var loggedInUser;
 
 router.post('/login', ({ session, body: { email, password } }, res, err) => {
   User.findOne({ email })
@@ -56,12 +56,7 @@ router.post('/login', ({ session, body: { email, password } }, res, err) => {
       })
 })
 
-router.get('/api/trophies', (req, res, err) => {
-  Trophy
-  .find()
-  .then(trophies => res.json({trophies}))
-  .catch(err)
-})
+router.get('/api/trophies', trophies.get)
 
 router.post('/api/trophies', (req, res, err) => {
   console.log("req.body", req.body);
