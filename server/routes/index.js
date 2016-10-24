@@ -30,15 +30,7 @@ router.put('/api/users', updateUser.addTrophyToUser);
 
 router.put('/api/userGroups', updateUser.addGroupToUser);
 
-router.post('/api/groups', (req, res, err) => {
-  console.log("req.body", req.body);
-  Group
-    .create(req.body)
-    .then((group) => {
-      console.log("group", group)
-      res.send("done") 
-    })
-})
+router.post('/api/groups', groups.createGroup)
 
 router.get('/api/groups', groups.getGroups)
 
