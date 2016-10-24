@@ -10,6 +10,7 @@ const router = Router()
 const trophies = require('../controllers/trophies.js')
 const userInfo = require('../controllers/userInfo.js')
 const membership = require('../controllers/membership.js')
+const updateUser = require('../controllers/updateUser.js')
 
 
 router.post('/register', membership.register)
@@ -24,23 +25,7 @@ router.get('/api/userTrophies/:id', userInfo.getUserTrophies)
 
 router.get('/api/userGroups/:id', userInfo.getUserGroups)
 
-  router.put('/api/users', (req, res, err) => {
-    let trophyId = req.query.trophyId
-    let userId = req.query.userId
-    
-    console.log('req.query', req.query);
-
-    console.log('trophyId', trophyId);
-    console.log('userId', userId);
-    
-    User
-      .findByIdAndUpdate(userId, 
-        { $push: { trophiesEarned: trophyId } }, { new: true }, 
-        function (err, user) {
-          if (err) return handleError(err);
-          res.send(user);
-        })  
-  });
+router.put('/api/users', updateUser.addTrophyToUser);
 
   router.put('/api/userGroups', (req, res, err) => {
     let groupId = req.query.groupId
