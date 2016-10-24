@@ -37,22 +37,6 @@ router.get('/api/groups', groups.getGroups)
 
 router.get('/api/groupDetail/:id', groupDetail.getGroupDetail)
 
-router.put(`/api/groupDetail/`, (req, res, err) => {
-    let groupId = req.query.groupId
-    let trophyId = req.query.trophyId
-    
-    console.log('req.query', req.query);
-
-    console.log('groupId', groupId);
-    console.log('trophyId', trophyId);
-    
-    Group
-      .findByIdAndUpdate(groupId, 
-        { $push: { groupTrophies: trophyId } }, { new: true }, 
-        function (err, group) {
-          if (err) return handleError(err);
-          res.send(group);
-        })
-})
+router.put(`/api/groupDetail/`, groupDetail.addTrophyToGroup)
 
 module.exports = router
