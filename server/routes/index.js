@@ -30,6 +30,7 @@ router.post('/register', ({body: {email, password}}, res) => {
 })
 
 router.post('/login', ({ session, body: { email, password } }, res, err) => {
+  let loggedInUser;
   User.findOne({ email })
      .then(user => {
        if (user) {
