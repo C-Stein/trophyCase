@@ -8,6 +8,7 @@ const Group = require('../models/group')
 const router = Router()
 
 const trophies = require('../controllers/trophies.js')
+const groups = require('../controllers/groups.js')
 const userInfo = require('../controllers/userInfo.js')
 const membership = require('../controllers/membership.js')
 const updateUser = require('../controllers/updateUser.js')
@@ -29,22 +30,17 @@ router.put('/api/users', updateUser.addTrophyToUser);
 
 router.put('/api/userGroups', updateUser.addGroupToUser);
 
-  router.post('/api/groups', (req, res, err) => {
-    console.log("req.body", req.body);
-    Group
-      .create(req.body)
-      .then((group) => {
-        console.log("group", group)
-        res.send("done") 
-      })
-  })
-
-router.get('/api/groups', (req, res, err) => {
+router.post('/api/groups', (req, res, err) => {
+  console.log("req.body", req.body);
   Group
-  .find()
-  .then(groups => res.json({groups}))
-  .catch(err)
+    .create(req.body)
+    .then((group) => {
+      console.log("group", group)
+      res.send("done") 
+    })
 })
+
+router.get('/api/groups', groups.getGroups)
 
 router.get('/api/groupDetail/:id', (req, res, err) => {
   let id = req.params.id
