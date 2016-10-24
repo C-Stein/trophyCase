@@ -15,34 +15,7 @@ const membership = require('../controllers/membership.js')
 
 router.post('/register', membership.register)
 
-router.post('/login', ({ session, body: { email, password } }, res, err) => {
-  let loggedInUser;
-  User.findOne({ email })
-     .then(user => {
-       if (user) {
-        loggedInUser = user;
-         return new Promise((resolve, reject) =>
-           bcrypt.compare(password, user.password, (err, matches) => {
-             if (err) {
-               reject(err)
-             } else {
-               resolve(matches)
-             }
-           })
-         )
-       } else {
-         res.send({ msg: 'Email does not exist in our system' })
-       }
-     })
-     .then((matches) => {
-       if (matches) {
-         session.email = email
-         res.json({ loggedInUser, msg: true })
-       } else {
-         res.send({ msg: 'Password does not match' })
-       }
-      })
-})
+router.post('/login', membership.login)
 
 router.get('/api/trophies', trophies.get)
 
