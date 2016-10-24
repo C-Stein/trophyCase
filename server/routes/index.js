@@ -10,24 +10,10 @@ const router = Router()
 
 const trophies = require('../controllers/trophies.js')
 const userInfo = require('../controllers/userInfo.js')
+const membership = require('../controllers/membership.js')
 
 
-router.post('/register', ({body: {email, password}}, res) => {
-      return new Promise((resolve, reject) => {
-      bcrypt.hash(password, 8, (err, hash) => {
-              if (err) {
-                reject(err)
-              } else {
-                resolve(hash)
-              }
-            })
-          })
-      .then(hash =>  {
-        res.send({msg:"User successfully created"})
-        return User.create({ email, password: hash })
-      })
-      .catch(console.error)
-})
+router.post('/register', membership.register)
 
 router.post('/login', ({ session, body: { email, password } }, res, err) => {
   let loggedInUser;
