@@ -12,6 +12,7 @@ const groups = require('../controllers/groups.js')
 const userInfo = require('../controllers/userInfo.js')
 const membership = require('../controllers/membership.js')
 const updateUser = require('../controllers/updateUser.js')
+const groupDetail = require('../controllers/groupDetail.js')
 
 
 router.post('/register', membership.register)
@@ -34,14 +35,7 @@ router.post('/api/groups', groups.createGroup)
 
 router.get('/api/groups', groups.getGroups)
 
-router.get('/api/groupDetail/:id', (req, res, err) => {
-  let id = req.params.id
-  console.log("getting group id thing");
-  Group
-  .findOne({_id : id})
-  .then(group => res.json({group}))
-  .catch(err)
-})
+router.get('/api/groupDetail/:id', groupDetail.getGroupDetail)
 
 router.put(`/api/groupDetail/`, (req, res, err) => {
     let groupId = req.query.groupId
