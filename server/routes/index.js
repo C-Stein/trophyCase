@@ -27,23 +27,7 @@ router.get('/api/userGroups/:id', userInfo.getUserGroups)
 
 router.put('/api/users', updateUser.addTrophyToUser);
 
-  router.put('/api/userGroups', (req, res, err) => {
-    let groupId = req.query.groupId
-    let userId = req.query.userId
-    
-    console.log('req.query', req.query);
-
-    console.log('groupId', groupId);
-    console.log('userId', userId);
-    
-    User
-      .findByIdAndUpdate(userId, 
-        { $push: { groupsJoined: groupId } }, { new: true }, 
-        function (err, user) {
-          if (err) return handleError(err);
-          res.send(user);
-        })  
-  });
+router.put('/api/userGroups', updateUser.addGroupToUser);
 
   router.post('/api/groups', (req, res, err) => {
     console.log("req.body", req.body);

@@ -19,3 +19,21 @@ module.exports.addTrophyToUser = (req, res, err) => {
         res.send(user);
       })  
 }
+
+module.exports.addGroupToUser = (req, res, err) => {
+  let groupId = req.query.groupId
+  let userId = req.query.userId
+  
+  console.log('req.query', req.query);
+
+  console.log('groupId', groupId);
+  console.log('userId', userId);
+  
+  User
+    .findByIdAndUpdate(userId, 
+      { $push: { groupsJoined: groupId } }, { new: true }, 
+      function (err, user) {
+        if (err) return handleError(err);
+        res.send(user);
+      })  
+}
