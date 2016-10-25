@@ -1,11 +1,10 @@
 <div class="homeEntry">
-  <my-trophy></my-trophy>
+
   <h3>Click on a trophy to add it to your trophy case</h3>
   <ul class="list" ng-repeat="trophy in trophies">
     <a ng-click="claimTrophy(trophy._id)">
       <li>
-          <img src="img/trophy.png" height=50 width=50>
-          {{ trophy.name }} is {{ trophy.description }}
+        <my-trophy></my-trophy>
       </li>
     </a>
   </ul>
