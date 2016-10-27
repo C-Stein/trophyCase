@@ -13,6 +13,10 @@ app.controller("TrophiesCtrl", ["$scope", "$http", "$sessionStorage",
     $scope.userId = $scope.loggedInUser._id
   }
 
+  // get (and list) all groups for logged in user
+
+  //get (and list) all trophies for groups
+
   //adding a trophy to a user
   $scope.claimTrophy = (id) => {
     console.log("trophy claimed");
