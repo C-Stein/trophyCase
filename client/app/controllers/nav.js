@@ -13,7 +13,9 @@ app.controller("NavCtrl",
     $scope.logout = () => {
       console.log("logging you out!");
       delete $sessionStorage.currentUser;
-      console.log('$sessionStorage.currentUser', $sessionStorage.currentUser);
+      delete $sessionStorage.userTrophies;
+      delete $sessionStorage.userGroups;
+      console.log('$sessionStorage.currentUser on logout', $sessionStorage.currentUser);
       $scope.nameToDisplay = "New User"
     }
 

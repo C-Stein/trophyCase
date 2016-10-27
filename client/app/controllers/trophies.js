@@ -28,6 +28,7 @@ app.controller("TrophiesCtrl", ["$scope", "$http", "$sessionStorage",
                 { params: { trophyId: id, userId: $scope.userId}})
       .then((data) => {
         console.log('data', data);
+        delete $sessionStorage.userTrophies;
       })
   }
 }]);
