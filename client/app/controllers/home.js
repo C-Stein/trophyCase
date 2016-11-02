@@ -35,8 +35,3 @@ if(!$sessionStorage.userGroups){
 }
 
 }]);
-
-
-
-
-

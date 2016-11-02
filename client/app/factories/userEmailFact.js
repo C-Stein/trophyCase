@@ -13,15 +13,3 @@ return {
   }
 }
 });
-
-
-// appServices.factory('AuthService', function ($localStorage){
-//     return {
-//         set: function(entidy, value) {
-//             $localStorage[entidy] = value;
-//         },
-//         get: function(entidy) {
-//            return $localStorage[entidy];
-//         }
-//     }
-// });

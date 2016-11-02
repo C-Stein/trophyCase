@@ -3,12 +3,6 @@
 app.controller("LoginCtrl", 
   ["$scope", "$http", "$location", "$localStorage", "$sessionStorage", "userEmail",
   function($scope, $http, $location, $localStorage, $sessionStorage, userEmail) {
-     
-    // $scope.storage = $sessionStorage;
-     
-    // $scope.saveEmail = (email) => {
-    //   storage.email = email;
-    // }
 
     $scope.loginUser = () => {
       const loginUser = {

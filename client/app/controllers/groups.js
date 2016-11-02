@@ -8,8 +8,6 @@ app.controller("GroupsCtrl", ["$scope", "$http", "$sessionStorage",
     $scope.userId = $scope.loggedInUser._id
   }
 
-  console.log("session?", $sessionStorage.currentUser)
-
   $http.get('/api/groups')
     .then( ({data: {groups}}) => {
       $scope.groups = groups
