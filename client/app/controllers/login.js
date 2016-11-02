@@ -1,8 +1,8 @@
 'use strict'
 
 app.controller("LoginCtrl", 
-  ["$scope", "$http", "$location", "$localStorage", "$sessionStorage",
-  function($scope, $http, $location, $localStorage, $sessionStorage) {
+  ["$scope", "$http", "$location", "$localStorage", "$sessionStorage", "userEmail",
+  function($scope, $http, $location, $localStorage, $sessionStorage, userEmail) {
      
     // $scope.storage = $sessionStorage;
      
@@ -22,6 +22,7 @@ app.controller("LoginCtrl",
           console.log('data.data: ', data.data)
           if (data.data.msg == true) {
             $sessionStorage.currentUser = data.data.loggedInUser
+            userEmail.set(data.data.loggedInUser.email)
             console.log(`logged in as ${loginUser.email}`)
           } else {
             alert(data.data.msg)

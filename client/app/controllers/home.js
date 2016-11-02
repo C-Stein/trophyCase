@@ -23,13 +23,16 @@ if(!$sessionStorage.userTrophies){
   $scope.trophies = $sessionStorage.userTrophies
 }
 
-$http.get(`/api/userGroups/${$scope.userId}`)
-  .then( ({data}) => {
-    console.log("data, ", data);
-    $sessionStorage.userGroups = data.groups
-    $scope.groups = data.groups
-  }
-    )
+if(!$sessionStorage.userGroups){
+  $http.get(`/api/userGroups/${$scope.userId}`)
+    .then( ({data}) => {
+      console.log("data, ", data);
+      $sessionStorage.userGroups = data.groups
+      $scope.groups = data.groups
+    })
+} else {
+  $scope.groups = $sessionStorage.userGroups
+}
 
 }]);
 

@@ -1,14 +1,27 @@
 'use strict'
 
 app.controller("NavCtrl", 
-  ["$scope", "$http", "$location", "$sessionStorage",
-  function($scope, $http, $location, $sessionStorage) {
+  ["$scope", "$http", "$location", "$sessionStorage", "userEmail",
+  function($scope, $http, $location, $sessionStorage, userEmail) {
 
-    if ($sessionStorage.currentUser) {
-      $scope.nameToDisplay = $sessionStorage.currentUser.email
-    } else {
-      $scope.nameToDisplay = "New User"
-    }
+ // $scope.$watch('aService.foo', function (newVal, oldVal, scope) {
+ //    if(newVal) { 
+ //      scope.foo = newVal;
+ //    }
+ //  });
+
+    $scope.nameToDisplay = userEmail.get();
+
+     $scope.$watch(userEmail.get, function (newVal, oldVal, scope) {
+   console.log("newVal", newVal);
+   console.log("oldVal", oldVal);
+   console.log("scope", scope);
+   if ($sessionStorage.currentUser) {
+$scope.nameToDisplay = $sessionStorage.currentUser.email
+}
+
+  });
+
 
     $scope.logout = () => {
       console.log("logging you out!");

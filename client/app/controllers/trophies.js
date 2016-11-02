@@ -29,6 +29,8 @@ app.controller("TrophiesCtrl", ["$scope", "$http", "$sessionStorage",
       .then((data) => {
         console.log('data', data);
         delete $sessionStorage.userTrophies;
+        //alert "trophy added"
+        //and/or redirect
       })
   }
 }]);

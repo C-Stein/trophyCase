@@ -8,6 +8,8 @@ app.controller("GroupsCtrl", ["$scope", "$http", "$sessionStorage",
     $scope.userId = $scope.loggedInUser._id
   }
 
+  console.log("session?", $sessionStorage.currentUser)
+
   $http.get('/api/groups')
     .then( ({data: {groups}}) => {
       $scope.groups = groups
@@ -32,6 +34,9 @@ app.controller("GroupsCtrl", ["$scope", "$http", "$sessionStorage",
                 { params: { groupId, userId: $scope.userId}})
       .then((data) => {
         console.log('data', data);
+        delete $sessionStorage.userGroups;
+        //alert "group added"
+        //redirect to home page
       })
   }
 
