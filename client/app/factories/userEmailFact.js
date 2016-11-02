@@ -8,7 +8,7 @@ return {
     if ($sessionStorage.currentUser) {
       return $sessionStorage.currentUser.email
     } else {
-      return "new user"
+      return "New User"
     }
   }
 }

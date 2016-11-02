@@ -10,7 +10,9 @@ app.controller("NavCtrl",
       if ($sessionStorage.currentUser) {
         $scope.nameToDisplay = $sessionStorage.currentUser.email
       }
+    $scope.display = $scope.nameToDisplay !== "New User"
     });
+
 
 
     $scope.logout = () => {
