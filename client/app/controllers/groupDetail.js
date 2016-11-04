@@ -56,6 +56,7 @@ app.controller("GroupDetailCtrl",
           //$scope.trophies.push(trophy)
           $scope.trophyName = ""
           $scope.trophyDescription = ""
+          $scope.notGroupTrophies.push(trophy)
           console.log("done");
         })
       .catch(console.error)
