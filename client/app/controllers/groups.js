@@ -51,7 +51,9 @@ $scope.createGroup = () => {
       .then(() => {
         $scope.groupName = ""
         $scope.groupDescription = ""
-        console.log("done");
+        //console.log("done");
+        $scope.groupsCreated.push(group)
+        $scope.groups.push(group)
       })
       .catch(console.error)
 }
