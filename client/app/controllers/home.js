@@ -34,9 +34,6 @@ if(!$sessionStorage.userGroups){
   $scope.groups = $sessionStorage.userGroups
 }
 
-console.log("$scope.groups", $scope.groups);
-
-//let indexes = []
 // for each of the trophies in the  groups that the user is a member of
 for (var i = 0; i < $scope.groups.length; i++) {
   for (var k = 0; k < $scope.groups[i].groupTrophies.length; k++) {
@@ -46,7 +43,7 @@ for (var i = 0; i < $scope.groups.length; i++) {
       if($scope.groups[i].groupTrophies[k]=== $scope.trophies[j]._id){
         console.log(`${$scope.groups[i].groupTrophies[k]}=== ${$scope.trophies[j]._id}`);
         $scope.groups[i].groupTrophies[k] = $scope.trophies[j]
-      } 
+      }
     }
   }
 }
@@ -86,17 +83,3 @@ for (var i = 0; i < $scope.groups.length; i++) {
 // }
 //   $scope.intersection($scope.allAvailableTrophies, $scope.trophies)
 //   console.log("$scope.allAvailableTrophies", $scope.allAvailableTrophies);
-
-
-// for (var i = 0; i < $scope.groups.length; i++) {
-//   for (var k = 0; k < $scope.groups[i].groupTrophies.length; k++) {
-//     console.log($scope.groups[i].groupTrophies[k])
-//     for (var j = 0; j < $scope.trophies.length; j++) {
-//       console.log("--",$scope.trophies[j]._id)
-//       if($scope.groups[i].groupTrophies[k]=== $scope.trophies[j]._id){
-//         console.log(`${$scope.groups[i].groupTrophies[k]}=== ${$scope.trophies[j]._id}`);
-//         $scope.groups[i].groupTrophies[k] = $scope.trophies[j]
-//       } 
-//     }
-//   }
-// }
