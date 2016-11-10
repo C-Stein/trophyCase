@@ -1,11 +1,13 @@
-app.controller("GroupsCtrl", ["$scope", "$http", "$sessionStorage",
-  function($scope, $http, $sessionStorage) {
+app.controller("GroupsCtrl", ["$scope", "$http", "$sessionStorage", "$location",
+  function($scope, $http, $sessionStorage, $location) {
      
-  $scope.fun = "groups are fun"
+
 
   if ($sessionStorage.currentUser) {
     $scope.loggedInUser = $sessionStorage.currentUser
     $scope.userId = $scope.loggedInUser._id
+  } else {
+    $location.path('/login')
   }
 
   $http.get('/api/groups')

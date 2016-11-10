@@ -1,11 +1,13 @@
-app.controller("HomeCtrl", ["$scope", "$sessionStorage", "$http", "$q",
-  function($scope, $sessionStorage, $http, $q) {
+app.controller("HomeCtrl", ["$scope", "$sessionStorage", "$http", "$q", "$location",
+  function($scope, $sessionStorage, $http, $q, $location) {
 
 if ($sessionStorage.currentUser) {
   $scope.loggedInUser = $sessionStorage.currentUser
   
   $scope.trophiesEarned = $sessionStorage.currentUser.trophiesEarned
   $scope.userId = $scope.loggedInUser._id
+} else {
+  $location.path('/login')
 }
 
 $scope.trophies = [];

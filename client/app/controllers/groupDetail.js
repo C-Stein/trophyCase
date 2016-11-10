@@ -1,11 +1,17 @@
 app.controller("GroupDetailCtrl", 
-  ["$scope", "$sessionStorage", "$http", "$routeParams", "$q",
-  function($scope, $sessionStorage, $http, $routeParams, $q) {
+  ["$scope", "$sessionStorage", "$http", "$routeParams", "$q", "$location",
+  function($scope, $sessionStorage, $http, $routeParams, $q, $location) {
     
     $scope.groupId = $routeParams.groupId;
     $scope.groupTrophies = []
     $scope.notGroupTrophies = []
 
+  if ($sessionStorage.currentUser) {
+    $scope.loggedInUser = $sessionStorage.currentUser
+    $scope.userId = $scope.loggedInUser._id
+  } else {
+    $location.path('/login')
+  }
 
 //make it work w/o promise.all
 

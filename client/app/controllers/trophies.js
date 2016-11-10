@@ -1,7 +1,6 @@
-app.controller("TrophiesCtrl", ["$scope", "$http", "$sessionStorage",
-  function($scope, $http, $sessionStorage) {
+app.controller("TrophiesCtrl", ["$scope", "$http", "$sessionStorage", "$location",
+  function($scope, $http, $sessionStorage, $location) {
      
-  $scope.fun = "trophies are fun"
 
   $http.get('/api/trophies')
     .then( ({data: {trophies}}) => 
@@ -11,6 +10,8 @@ app.controller("TrophiesCtrl", ["$scope", "$http", "$sessionStorage",
   if ($sessionStorage.currentUser) {
     $scope.loggedInUser = $sessionStorage.currentUser
     $scope.userId = $scope.loggedInUser._id
+  } else {
+    $location.path('/login')
   }
 
   // get (and list) all groups for logged in user
