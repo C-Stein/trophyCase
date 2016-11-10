@@ -34,6 +34,8 @@ if(!$sessionStorage.userGroups){
   $scope.groups = $sessionStorage.userGroups
 }
 
+const indexes = []
+
 // for each of the trophies in the  groups that the user is a member of
 for (var i = 0; i < $scope.groups.length; i++) {
   for (var k = 0; k < $scope.groups[i].groupTrophies.length; k++) {
@@ -43,11 +45,14 @@ for (var i = 0; i < $scope.groups.length; i++) {
       if($scope.groups[i].groupTrophies[k]=== $scope.trophies[j]._id){
         console.log(`${$scope.groups[i].groupTrophies[k]}=== ${$scope.trophies[j]._id}`);
         $scope.groups[i].groupTrophies[k] = $scope.trophies[j]
+      } else {
+        console.log("else", i, k);
+        indexes.push(k)
       }
     }
   }
 }
-
+console.log("indexes", indexes);
 
 
 }]);

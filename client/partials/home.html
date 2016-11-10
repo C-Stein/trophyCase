@@ -23,7 +23,7 @@
       <li>
         {{ group.groupName }}
         <ul ng-repeat="trophies in group.groupTrophies">
-          <li>{{ trophies }}</li>
+          <li ng-if="trophies.name">{{ trophies.name }}</li>
         </ul>
       </li>
   </ul>
