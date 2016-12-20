@@ -5,6 +5,7 @@ app.controller("LoginCtrl",
   function($scope, $http, $location, $localStorage, $sessionStorage, userEmail) {
 
     $scope.loginUser = () => {
+      console.log("logging  you in");
       const loginUser = {
         email: $scope.email,
         password: $scope.password
