@@ -1,5 +1,5 @@
-app.controller("HomeCtrl", ["$scope", "$sessionStorage", "$http", "$q", "$location",
-  function($scope, $sessionStorage, $http, $q, $location) {
+app.controller("HomeCtrl", ["$scope", "$sessionStorage", "$http", "$q", "$timeout", "$location",
+  function($scope, $sessionStorage, $http, $q, $timeout, $location) {
 
 if ($sessionStorage.currentUser) {
   $scope.loggedInUser = $sessionStorage.currentUser
@@ -10,26 +10,13 @@ if ($sessionStorage.currentUser) {
   $location.path('/login')
 }
 
-$scope.trophies = [];
-$scope.groups = [];
-
-  // $http.get(`/api/userTrophies/${$scope.userId}`)
-  //   .then( ({data}) => {
-  //     $sessionStorage.userTrophies = data.trophies
-  //     $scope.trophies = data.trophies
-  //     $http.get(`/api/userGroups/${$scope.userId}`)
-  //       .then( ({data}) => {
-  //         //console.log("data, ", data);
-  //         $sessionStorage.userGroups = data.groups
-  //         $scope.groups = data.groups
-  //         putTrophyObjInGroups()
-  //     })
-  //   })
+// $scope.trophies = [];
+// $scope.groups = [];
 
 let promise1 = $http.get(`/api/userTrophies/${$scope.userId}`)
 let promise2 = $http.get(`/api/userGroups/${$scope.userId}`)
 
-$q.all([promise1, promise2]) //using $q b/c Promise.all requires a $scope.$apply() 
+Promise.all([promise1, promise2]) //using $q b/c Promise.all requires a $scope.$apply() 
   .then(values => {
     console.log("values", values);
     $sessionStorage.userTrophies = values[0].data.trophies
@@ -38,6 +25,8 @@ $q.all([promise1, promise2]) //using $q b/c Promise.all requires a $scope.$apply
     $scope.groups = values[1].data.groups
     putTrophyObjInGroups()
   })
+  .then($timeout)
+  .catch(console.error)
 
 
 putTrophyObjInGroups = () => {
