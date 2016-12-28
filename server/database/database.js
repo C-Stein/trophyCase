@@ -1,6 +1,6 @@
 'use strict'
 
-const auth = require('../authTokens')
+const auth = require('../auth/authTokens')
 
 const mongoose = require('mongoose');
 
