@@ -18,7 +18,7 @@ app.controller("TrophiesCtrl", ["$scope", "$http", "$sessionStorage", "$location
 
   //get (and list) all trophies for groups
 
-let promise1 = $http.get(`/api/userTrophies/${$scope.userId}`)
+let promise1 = $http.get(`/api/trophies/`)
 let promise2 = $http.get(`/api/userGroups/${$scope.userId}`)
 
   $q.all([promise1, promise2]) //using $q b/c Promise.all requires a $scope.$apply() 
