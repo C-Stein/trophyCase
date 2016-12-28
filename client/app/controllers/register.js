@@ -5,7 +5,7 @@ app.controller("RegisterCtrl", ["$scope", "$http", "$location",
   $scope.registerUser = () => {
 
     const newUser = {
-      email: $scope.email,
+      email: $scope.email.toLowerCase(),
       password: $scope.password
       }
 

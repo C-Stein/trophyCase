@@ -7,7 +7,7 @@ app.controller("LoginCtrl",
     $scope.loginUser = () => {
       console.log("logging  you in");
       const loginUser = {
-        email: $scope.email,
+        email: $scope.email.toLowerCase(),
         password: $scope.password
       }
 
