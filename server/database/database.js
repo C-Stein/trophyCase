@@ -1,8 +1,10 @@
 'use strict'
 
+const auth = require('../authTokens')
+
 const mongoose = require('mongoose');
 
-const MONGODB_URL = 'mongodb://trophy_owner:PASSWORD@ds145128.mlab.com:45128/trophy_case'
+const MONGODB_URL = `mongodb://${auth.owner}:${auth.password}@ds145128.mlab.com:45128/trophy_case`
 
 mongoose.Promise = Promise;
 
