@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 
-const MONGODB_URL = process.env.MONGODB_URL || 'mongodb://localhost:27017/trophycase'
+const MONGODB_URL = 'mongodb://trophy_owner:PASSWORD@ds145128.mlab.com:45128/trophy_case'
 
 mongoose.Promise = Promise;
 
