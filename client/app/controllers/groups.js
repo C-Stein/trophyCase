@@ -23,41 +23,42 @@ app.controller("GroupsCtrl", ["$scope", "$http", "$sessionStorage", "$location",
       }
     })
 
-
   $scope.joinGroup = (groupId) =>{
-    console.log("group claimed");
-    console.log("user id", $scope.loggedInUser._id);
-    console.log("group id!", groupId);
 
     $http.put(`/api/userGroups`,
                 {},
                 { params: { groupId, userId: $scope.userId}})
       .then((data) => {
-        console.log('data', data);
         delete $sessionStorage.userGroups;
         //alert "group added"
         //redirect to home page
       })
-  }
-
-$scope.createGroup = () => {
-  let group = {
-      groupName: $scope.groupName,
-      groupDescription: $scope.groupDescription,
-      groupCreator: $scope.userId,
-      groupMembers: [],
-  }
-
-  $http
-    .post('/api/groups', group)
-      .then(() => {
-        $scope.groupName = ""
-        $scope.groupDescription = ""
-        //console.log("done");
-        $scope.groupsCreated.push(group)
-        $scope.groups.push(group)
+    $http.post(`/api/groupUsers`,
+                {},
+                { params: { groupId, userId: $scope.userId}})
+      .then((data) => {
+        console.log("new data", data)
       })
-      .catch(console.error)
-}
+
+  }
+
+  $scope.createGroup = () => {
+    let group = {
+        groupName: $scope.groupName,
+        groupDescription: $scope.groupDescription,
+        groupCreator: $scope.userId,
+        groupMembers: [],
+    }
+
+    $http
+      .post('/api/groups', group)
+        .then(() => {
+          $scope.groupName = ""
+          $scope.groupDescription = ""
+          $scope.groupsCreated.push(group)
+          $scope.groups.push(group)
+        })
+        .catch(console.error)
+  }
 
 }]);

@@ -30,6 +30,8 @@ router.put('/api/userGroups', updateUser.addGroupToUser);
 
 router.post('/api/groups', groups.createGroup)
 
+router.post('/api/groupUsers', groups.addUserToGroup)
+
 router.get('/api/groups', groups.getGroups)
 
 router.get('/api/groupDetail/:id', groupDetail.getGroupDetail)
