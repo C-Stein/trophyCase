@@ -43,10 +43,7 @@ app.controller("GroupDetailCtrl",
       console.log($scope.group);
       })
 
-
-//make it work with promise.all ????
-
-  
+//make it work with promise.all 
 
   $scope.createTrophy = () => {
     // saveoff currently entered info as a "trophy"
@@ -55,11 +52,10 @@ app.controller("GroupDetailCtrl",
       description: $scope.trophyDescription,
     }
 
-    //add trophy to $scope.trophies and to the database 
+    //add trophy to $scope.notGroupTrophies and to the database 
     $http
       .post('/api/trophies', trophy)
       .then(() => {
-          //$scope.trophies.push(trophy)
           $scope.trophyName = ""
           $scope.trophyDescription = ""
           $scope.notGroupTrophies.push(trophy)
@@ -83,6 +79,5 @@ app.controller("GroupDetailCtrl",
         $scope.groupTrophies.push(trophy)
       })
   }
-
 
 }]);
