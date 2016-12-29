@@ -39,18 +39,27 @@ app.controller("GroupDetailCtrl",
             }
           }
           })
-      listMembers()
+      //listMembers()
       console.log($scope.group);
       })
 
 
     listMembers = () => {
       allUsers.get().then((data) => {
-        $scope.something = data
+        $scope.allUsers = data
         console.log("something", $scope.something)
       })
       $scope.members = $scope.group.groupMembers
     }
+
+    getUsersForThisGroup = () => {
+      $http.get(`api/usersForGroup/${$scope.groupId}`)
+      .then((data) => {
+        console.log(`getUsersForThisGroup`, data)
+        $scope.groupUsers = data
+      })
+    }
+    getUsersForThisGroup()
 
 //make it work with promise.all 
 
