@@ -10,6 +10,7 @@ const userInfo = require('../controllers/userInfo.js')
 const membership = require('../controllers/membership.js')
 const updateUser = require('../controllers/updateUser.js')
 const groupDetail = require('../controllers/groupDetail.js')
+const allUsers = require('../controllers/allUsers.js')
 
 
 router.post('/register', membership.register)
@@ -19,6 +20,8 @@ router.post('/login', membership.login)
 router.get('/api/trophies', trophies.get)
 
 router.post('/api/trophies', trophies.post)
+
+router.get('/api/allUsers', allUsers.get)
 
 router.get('/api/userTrophies/:id', userInfo.getUserTrophies)
 
