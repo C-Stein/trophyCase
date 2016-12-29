@@ -45,8 +45,10 @@ app.controller("GroupDetailCtrl",
 
 
     listMembers = () => {
-      $scope.something = allUsers.get()
-      console.log("something", $scope.something)
+      allUsers.get().then((data) => {
+        $scope.something = data
+        console.log("something", $scope.something)
+      })
       $scope.members = $scope.group.groupMembers
     }
 
