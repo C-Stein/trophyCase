@@ -65,4 +65,16 @@ putTrophyObjInGroups = () => {
         //and/or redirect
       })
   }
+
+  //removing a trophy from a user
+  $scope.removeTrophy = (id) => {
+    $http.delete(`/api/users`,
+                    {},
+                    { params: {trophyId: id, userId: $scope.userId}})
+      .then((data) => {
+        console.log('data after removing trophy', data);
+        delete $sessionStorage.userTrophies;
+        //alert "trophy removed"
+      })
+  }
 }]);
