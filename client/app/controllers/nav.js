@@ -20,6 +20,7 @@ app.controller("NavCtrl",
       delete $sessionStorage.currentUser;
       delete $sessionStorage.userTrophies;
       delete $sessionStorage.userGroups;
+      delete $sessionStorage.allUsers;
       console.log('$sessionStorage.currentUser on logout', $sessionStorage.currentUser);
       $scope.nameToDisplay = "New User"
     }

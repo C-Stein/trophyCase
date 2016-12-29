@@ -1,6 +1,6 @@
 app.controller("GroupDetailCtrl", 
-  ["$scope", "$sessionStorage", "$http", "$routeParams", "$q", "$location",
-  function($scope, $sessionStorage, $http, $routeParams, $q, $location) {
+  ["$scope", "$sessionStorage", "$http", "$routeParams", "$q", "$location", "allUsers",
+  function($scope, $sessionStorage, $http, $routeParams, $q, $location, allUsers) {
     
     $scope.groupId = $routeParams.groupId;
     $scope.groupTrophies = []
@@ -39,9 +39,16 @@ app.controller("GroupDetailCtrl",
             }
           }
           })
-
+      listMembers()
       console.log($scope.group);
       })
+
+
+    listMembers = () => {
+      $scope.something = allUsers.get()
+      console.log("something", $scope.something)
+      $scope.members = $scope.group.groupMembers
+    }
 
 //make it work with promise.all 
 
