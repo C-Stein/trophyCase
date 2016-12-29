@@ -23,6 +23,8 @@ router.post('/api/trophies', trophies.post)
 
 router.get('/api/allUsers', allUsers.get)
 
+router.get('/api/usersForGroup/:id', allUsers.getGroup)
+
 router.get('/api/userTrophies/:id', userInfo.getUserTrophies)
 
 router.get('/api/userGroups/:id', userInfo.getUserGroups)
