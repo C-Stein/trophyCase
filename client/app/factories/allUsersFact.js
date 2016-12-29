@@ -2,21 +2,22 @@ app.factory('allUsers', function($sessionStorage, $http) {
   console.log("all users factory"); 
 
   return {
-    // set: function(value) {
-    //   $sessionStorage.allUsers = value;
-    // },
     get: function() {
       console.log("getting all users")
       if ($sessionStorage.allUsers) {
-        console.log("returning allUsers")
-        return $sessionStorage.allUsers
+        return new Promise((res, rej) => {
+          console.log("returning allUsers from sessionStorage")
+          res($sessionStorage.allUsers)
+        })
       } else {
-        $http.get(`/api/allUsers`).
-          then((data) => {
-            console.log("allUsersFact data", data)
-            $sessionStorage.allUsers = data.data
-            return data.data
-          })
+        return new Promise((res, rej) =>{
+          $http.get(`/api/allUsers`)
+            .then((data) => {
+              console.log("allUsersFact data", data)
+              $sessionStorage.allUsers = data.data
+              res(data.data)
+            })
+        })
       } 
     }
   }
