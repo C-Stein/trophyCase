@@ -39,24 +39,14 @@ app.controller("GroupDetailCtrl",
             }
           }
           })
-      //listMembers()
-      console.log($scope.group);
+      //console.log($scope.group);
       })
-
-
-    listMembers = () => {
-      allUsers.get().then((data) => {
-        $scope.allUsers = data
-        console.log("something", $scope.something)
-      })
-      $scope.members = $scope.group.groupMembers
-    }
 
     getUsersForThisGroup = () => {
       $http.get(`api/usersForGroup/${$scope.groupId}`)
       .then((data) => {
-        console.log(`getUsersForThisGroup`, data)
-        $scope.groupUsers = data
+        console.log(`getUsersForThisGroup`, data.data)
+        $scope.groupUsers = data.data
       })
     }
     getUsersForThisGroup()

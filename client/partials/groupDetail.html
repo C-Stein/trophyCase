@@ -33,7 +33,17 @@
 </form>
 <div> 
   <h3>Members of this group</h3>
-  <ul ng-repeat="member in members">
-    <li>{{member}}</li>
+    <div ng-if="groupUsers.length == 0">
+      <p>No one has joined this group yet</p>
+    </div>
+  <ul>
+    <li ng-repeat="member in groupUsers">
+      {{member.email}}
+      <ul>
+        <li ng-repeat="trophy in member.trophiesEarned">
+          {{trophy}}
+        </li>
+      </ul>
+    </li>
   </ul>
 </div>
