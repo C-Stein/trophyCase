@@ -31,3 +31,9 @@
   <input type="text" name="trophyDescription" ng-model="trophyDescription">
   <input type="submit" ng-click="createTrophy()">
 </form>
+<div> 
+  <h3>Members of this group</h3>
+  <ul ng-repeat="member in group.groupMembers">
+    <li>{{member}}</li>
+  </ul>
+</div>
