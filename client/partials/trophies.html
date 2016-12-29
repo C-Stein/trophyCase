@@ -1,21 +1,12 @@
 <div class="homeEntry">
 
-<!--   <h3>Click on a trophy to add it to your trophy case</h3>
-  <ul class="list" ng-repeat="trophy in trophies">
-    <a ng-click="claimTrophy(trophy._id)">
-      <li>
-        <my-trophy></my-trophy>
-      </li>
-    </a>
-  </ul>
-</div> -->
-
 <!-- list groups the member has joined
 show available trophies for those groups
 show already claimed trophies "grayed" out -->
 
 <div class="personalCase">
   <h3>Here are the groups you have joined, and the trophies you can earn for each group!</h3>
+  <h5>Click a trophy to claim it and add it to your trophy case</h5>
     <div ng-if="groups.length == 0">
       <p>You haven't joined any groups yet :-(</p>
     </div>
@@ -23,7 +14,12 @@ show already claimed trophies "grayed" out -->
       <li>
         {{ group.groupName }}
         <ul ng-repeat="trophy in group.groupTrophies">
-          <li ng-if="trophy.name"><a ng-click="claimTrophy(trophy._id)">{{trophy.name}}</a></li>
+          <li ng-if="trophy.name">
+            <a ng-click="claimTrophy(trophy._id)">
+              {{trophy.name}}
+            </a>
+            <button ng-click="removeTrophy(trophy._id)">Remove</button>
+          </li>
         </ul>
       </li>
   </ul>
