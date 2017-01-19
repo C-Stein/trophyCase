@@ -31,6 +31,8 @@ router.get('/api/userGroups/:id', userInfo.getUserGroups)
 
 router.put('/api/users', updateUser.addTrophyToUser);
 
+router.delete('/api/users', updateUser.removeTrophy)
+
 router.put('/api/userGroups', updateUser.addGroupToUser);
 
 router.post('/api/groups', groups.createGroup)
