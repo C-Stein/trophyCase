@@ -6,11 +6,6 @@ module.exports.addTrophyToUser = (req, res, err) => {
   let trophyId = req.query.trophyId
   let userId = req.query.userId
   
-  console.log('req.query', req.query);
-
-  console.log('trophyId', trophyId);
-  console.log('userId', userId);
-  
   User
     .findByIdAndUpdate(userId, 
       { $push: { trophiesEarned: trophyId } }, { new: true }, 
@@ -31,4 +26,20 @@ module.exports.addGroupToUser = (req, res, err) => {
         if (err) return handleError(err);
         res.send(user);
       })  
+}
+
+module.exports.removeTrophy = (req, res, err) => {
+  let trophyId = req.query.trophyId
+  let userId = req.query.userId
+
+  console.log("REMOVING TROPHY", req.query)
+
+    User
+    .findByIdAndUpdate(userId, 
+     { $pull: { trophiesEarned: trophyId } }, { new: true }, 
+      //{ $push: { trophiesEarned: trophyId } }, { new: true }, 
+      function (err, user) {
+        if (err) return handleError(err);
+        res.send(user);
+      }) 
 }
