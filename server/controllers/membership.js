@@ -41,7 +41,7 @@ module.exports.login = ({ session, body: { email, password } }, res, err) => {
      })
      .then((matches) => {
        if (matches) {
-         session.email = email
+         //session.email = email
          res.json({ loggedInUser, msg: true })
        } else {
          res.send({ msg: 'Password does not match' })
