@@ -15,7 +15,7 @@
         <ul ng-repeat="trophies in group.groupTrophies">
           <li ng-if="trophies.name">
             {{ trophies.name }}
-            <button ng-click="removeTrophy(trophy._id)">Remove</button>
+            <button ng-click="removeTrophy(trophies._id)">Remove</button>
           </li>
         </ul>
       </li>
