@@ -16,19 +16,6 @@ app.use(express.static('client'))
 
 app.use(json())
 
-// app.use(session({
-//   'store': new RedisStore({
-//     url: process.env.REDIS_URL || 'redis://localhost:6379'
-//   }),
-//   'secret': 'supersecretkey' //fine to put this on github
-// }))
-
-// app.use((req, res, next) => {
-//   app.locals.email = req.session.email
-//   console.log("user-mail: ", app.locals.email);
-//   next()
-// })
-
 app.use(routes)
 
 //listen
