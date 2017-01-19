@@ -2,6 +2,8 @@
   <h3>Hi {{ currentUserEmail }}, welcome to your trophy case</h3>
 </div>
 
+<myTrophy></myTrophy>
+
 <div class="personalCase">
   <h3>Here are the groups you have joined, and the trophies you have earned!</h3>
     <div ng-if="groups.length == 0">
@@ -11,7 +13,10 @@
       <li>
         {{ group.groupName }}
         <ul ng-repeat="trophies in group.groupTrophies">
-          <li ng-if="trophies.name">{{ trophies.name }}</li>
+          <li ng-if="trophies.name">
+            {{ trophies.name }}
+            <button ng-click="removeTrophy(trophy._id)">Remove</button>
+          </li>
         </ul>
       </li>
   </ul>
