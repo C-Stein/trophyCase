@@ -56,6 +56,4 @@ putTrophyObjInGroups = () => {
         //alert "trophy removed"
       })
   }
-
-console.log('$sessionStorage', $sessionStorage)
 }]);
