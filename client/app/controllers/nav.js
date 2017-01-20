@@ -1,19 +1,32 @@
 'use strict'
 
 app.controller("NavCtrl", 
-  ["$scope", "$http", "$location", "$sessionStorage", "userEmail",
-  function($scope, $http, $location, $sessionStorage, userEmail) {
+  ["$scope", "$location", "$sessionStorage", "userEmail",
+  function($scope, $location, $sessionStorage, userEmail) {
 
     $scope.nameToDisplay = userEmail.get();
 
     $scope.$watch(userEmail.get, function (newVal, oldVal, scope) {
-      if ($sessionStorage.currentUser) {
-        $scope.nameToDisplay = $sessionStorage.currentUser.email
-      }
-    $scope.display = $scope.nameToDisplay !== "New User"
+        $scope.nameToDisplay = userEmail.get()
+    $scope.display = ($scope.nameToDisplay !== "New User")
     });
 
 
+function removeActiveClasses(){
+  $scope.activateHome = false
+  $scope.activateGroups = false
+  $scope.activateTrophies = false
+
+
+}
+
+removeActiveClasses()
+
+$scope.switchTabs = (route) => {
+  $location.url(route) //sets the location based on the route passed in the html
+  removeActiveClasses()
+  $scope.activateGroups = true
+}
 
     $scope.logout = () => {
       console.log("logging you out!");
