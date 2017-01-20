@@ -11,25 +11,31 @@
       <a class="navbar-brand" href="#"><img src="img/trophy.png" height=24></a>
     </div>
 
+<!--  <li ng-class="{ active: isCurrentTab('/home') }">
+        <a class="navbar-brand" href="#/home">Noted</a>
+      </li> -->
+
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li ng-class="{activeTab: activateHome}">
+        <li ng-class="{ activeTab: isCurrentTab('/') }">
           <a href="#/" ng-show="display">Home</a>
         </li>
-        <li ng-class="{activeTab: activateTrophies}">
+        <li ng-class="{ activeTab: isCurrentTab('/trophies') }">
           <a href="#/trophies" ng-show="display">Trophies</a>
         </li>
-        <li ng-class="{activeTab: activateGroups}">
-          <a ng-click="switchTabs('/groups')" ng-show="display">Groups</a>
+        <li ng-class="{ activeTab: isCurrentTab('/groups') }">
+          <a href="#/groups" ng-show="display">Groups</a>
         </li>
-        <li ng-class="{activeTab: activateRegister}">
+        <li ng-class="{ activeTab: isCurrentTab('/register') }">
           <a href="#/register"  ng-hide="display">Register</a>
         </li>
-        <li>
+        <li ng-class="{ activeTab: isCurrentTab('/login') }">
           <a href="#/login" ng-hide="display">Login</a>
         </li>
-        <li><a href="#/login" ng-click="logout()" ng-show="display">Logout</a></li>
+        <li>
+          <a href="#/login" ng-click="logout()" ng-show="display">Logout</a>
+        </li>
         <li><a href="#/">Hi {{ nameToDisplay }}</a></li>
 
       </ul>
